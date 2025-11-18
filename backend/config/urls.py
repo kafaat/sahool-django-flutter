@@ -58,6 +58,9 @@ urlpatterns = [
     
     # API Routes
     path('api/', include(router.urls)),
+    
+    # AI Routes
+    path('api/ai/', include('ai.urls')),
 ]
 
 # إضافة ملفات الوسائط في وضع التطوير
