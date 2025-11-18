@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Farm, Crop
 from .serializers import FarmSerializer, FarmDetailSerializer, CropSerializer
+from .reports import FarmReportGenerator
 
 
 class FarmViewSet(viewsets.ModelViewSet):
@@ -42,6 +43,17 @@ class FarmViewSet(viewsets.ModelViewSet):
             'total_devices': sum(field.devices.count() for field in farm.fields.all()),
         }
         return Response(stats)
+    
+    @action(detail=True, methods=['get'])
+    def monthly_report(self, request, pk=None):
+        """تقرير شهري للمزرعة"""
+        farm = self.get_object()
+        months = int(request.query_params.get('months', 1))
+        
+        generator = FarmReportGenerator(farm)
+        report = generator.get_monthly_report(months)
+        
+        return Response(report)
 
 
 class CropViewSet(viewsets.ModelViewSet):
