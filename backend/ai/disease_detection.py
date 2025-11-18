@@ -261,6 +261,15 @@ class PlantDiseaseDetector:
             dict: معلومات المرض
         """
         return self.DISEASE_DATABASE.get(disease_id, {})
+    
+    def get_supported_diseases(self) -> List[str]:
+        """
+        إرجاع قائمة بأسماء الأمراض المدعومة
+        
+        Returns:
+            list: قائمة معرفات الأمراض
+        """
+        return list(self.DISEASE_DATABASE.keys())
 
 
 # مثيل عام للاستخدام
