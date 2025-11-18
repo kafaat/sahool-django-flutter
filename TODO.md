@@ -108,3 +108,14 @@
 - [x] حفظ البيانات محلياً
 - [x] المزامنة التلقائية
 - [x] قائمة انتظار للعمليات
+
+
+## المرحلة الحادية عشرة: الاختبارات الشاملة
+- [x] Unit Tests للـ Backend (Django)
+- [x] API Tests للـ Endpoints
+- [ ] Unit Tests للـ Flutter
+- [ ] Widget Tests للـ Flutter
+- [ ] Integration Tests
+- [x] Smoke Tests
+- [x] تشغيل جميع الاختبارات
+- [x] تقرير التغطية (Coverage Report)
