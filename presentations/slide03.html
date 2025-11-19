@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظرة عامة على المشروع</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .overview-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .vision-card {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .vision-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .vision-content {
+            color: #E8E6E1;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .objective-item {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .objective-icon {
+            font-size: 2rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+        }
+        .objective-title {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .objective-desc {
+            color: #4A6C5A;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-eye text-[#E8871E] mr-4"></i>
+            نظرة عامة على المشروع
+        </h1>
+        
+        <div class="flex-1 grid grid-cols-2 gap-6 overflow-hidden">
+            <div class="overview-container">
+                <div class="vision-card">
+                    <div class="vision-title">
+                        <i class="fas fa-lightbulb text-[#E8871E]"></i>
+                        الرؤية
+                    </div>
+                    <div class="vision-content">
+                        تطوير منصة <span class="highlight">GeoFarm</span> كحل متكامل للتحليل الزراعي الذكي، تجمع بين قدرات 
+                        <span class="highlight">الذكاء الاصطناعي المتقدمة</span> والاستشعار عن بعد وإنترنت الأشياء (IoT) 
+                        لتمكين المزارعين والشركات الزراعية من اتخاذ قرارات مستنيرة ومبنية على البيانات.
+                    </div>
+                </div>
+
+                <div class="vision-card">
+                    <div class="vision-title">
+                        <i class="fas fa-users text-[#E8871E]"></i>
+                        الجمهور المستهدف
+                    </div>
+                    <div class="vision-content">
+                        • مزارعو الحيازات الصغيرة والمتوسطة<br>
+                        • الشركات الزراعية الكبيرة<br>
+                        • المؤسسات الحكومية والبحثية<br>
+                        • المستثمرين في التكنولوجيا الزراعية<br>
+                        • شركات الاستشارات الزراعية
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-container">
+                <div class="vision-card">
+                    <div class="vision-title">
+                        <i class="fas fa-bullseye text-[#E8871E]"></i>
+                        الأهداف الرئيسية
+                    </div>
+                </div>
+
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="objective-title">تحليل ذكي للصور الفضائية</div>
+                        <div class="objective-desc">باستخدام نموذج GeoChat المتخصص في الاستشعار عن بُعد</div>
+                    </div>
+
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="objective-title">مراقبة مستمرة للمحاصيل</div>
+                        <div class="objective-desc">من خلال السلاسل الزمنية لصور الأقمار الصناعية</div>
+                    </div>
+
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="objective-title">كشف تلقائي لحدود الحقول</div>
+                        <div class="objective-desc">باستخدام نموذج FIBOA المتقدم</div>
+                    </div>
+
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="objective-title">تكامل IoT</div>
+                        <div class="objective-desc">مراقبة الحقول في الوقت الفعلي</div>
+                    </div>
+
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="objective-title">توصيات زراعية ذكية</div>
+                        <div class="objective-desc">للري والأسمدة ومكافحة الآفات</div>
+                    </div>
+
+                    <div class="objective-item">
+                        <div class="objective-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="objective-title">محادثة طبيعية</div>
+                        <div class="objective-desc">باللغة العربية للتفاعل مع النظام</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: sahook-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sahook_password
+      POSTGRES_DB: sahook_main
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - sahook-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: sahook-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - sahook-network
+
+  # Django Backend
+  backend:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook-backend
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-key}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: sahook_main
+      DB_USER: postgres
+      DB_PASSWORD: sahook_password
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      EMAIL_HOST: ${EMAIL_HOST:-smtp.gmail.com}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      FIREBASE_CREDENTIALS: ${FIREBASE_CREDENTIALS}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ../sahool-backend:/app
+      - media_files:/app/media
+      - static_files:/app/staticfiles
+    networks:
+      - sahook-network
+    command: python manage.py runserver 0.0.0.0:8000
+
+  # Celery Worker
+  celery:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook-celery
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-key}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: sahook_main
+      DB_USER: postgres
+      DB_PASSWORD: sahook_password
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CELERY_BROKER_URL: redis://redis:6379
+      CELERY_RESULT_BACKEND: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ../sahool-backend:/app
+      - media_files:/app/media
+    networks:
+      - sahook-network
+    command: celery -A sahook worker --loglevel=info
+
+  # Celery Beat (Scheduler)
+  celery-beat:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook-celery-beat
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-True}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-key}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: sahook_main
+      DB_USER: postgres
+      DB_PASSWORD: sahook_password
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CELERY_BROKER_URL: redis://redis:6379
+      CELERY_RESULT_BACKEND: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ../sahool-backend:/app
+    networks:
+      - sahook-network
+    command: celery -A sahook beat --loglevel=info
+
+  # Flutter Web
+  flutter-web:
+    build:
+      context: ../sahool-mobile
+      dockerfile: Dockerfile
+      target: web
+    container_name: sahook-flutter-web
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - sahook-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: sahook-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+      - static_files:/var/www/static
+      - media_files:/var/www/media
+    depends_on:
+      - backend
+      - flutter-web
+    networks:
+      - sahook-network
+
+  # pgAdmin (Database Management)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sahook-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sahool.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - sahook-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  media_files:
+  static_files:
+
+networks:
+  sahook-network:
+    driver: bridge

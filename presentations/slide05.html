@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معمارية الخدمات المصغرة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .architecture-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .layer-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 12px;
+        }
+        .layer-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .service-item {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+        }
+        .service-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .service-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .principle-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(74, 108, 90, 0.1);
+            border-radius: 8px;
+        }
+        .principle-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .principle-content {
+            flex: 1;
+        }
+        .principle-title {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .principle-desc {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .flow-arrow {
+            text-align: center;
+            color: #E8871E;
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-sitemap text-[#E8871E] mr-4"></i>
+            معمارية الخدمات المصغرة (Nano-services)
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="architecture-container">
+                <div class="layer-section">
+                    <div class="layer-title">
+                        <i class="fas fa-desktop text-[#E8871E]"></i>
+                        طبقة الواجهة الأمامية
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-globe"></i></div>
+                            <div class="service-name">Web App (React)</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="service-name">Mobile App (React Native)</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-cog"></i></div>
+                            <div class="service-name">Admin Panel (React)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="layer-section">
+                    <div class="layer-title">
+                        <i class="fas fa-shield-alt text-[#E8871E]"></i>
+                        طبقة بوابة API
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-key"></i></div>
+                            <div class="service-name">Kong / Traefik API Gateway</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="layer-section">
+                    <div class="layer-title">
+                        <i class="fas fa-layer-group text-[#E8871E]"></i>
+                        طبقة الخدمات المصغرة
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon"><i class="fas fa-cubes"></i></div>
+                        <div class="principle-content">
+                            <div class="principle-title">13 خدمة مصغرة مستقلة</div>
+                            <div class="principle-desc">كل خدمة مسؤولة عن مجال عمل محدد وتتواصل عبر APIs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="layer-section">
+                    <div class="layer-title">
+                        <i class="fas fa-database text-[#E8871E]"></i>
+                        طبقة البيانات
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-database"></i></div>
+                            <div class="service-name">PostgreSQL</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-map"></i></div>
+                            <div class="service-name">PostGIS</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="service-name">InfluxDB</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon"><i class="fas fa-memory"></i></div>
+                            <div class="service-name">Redis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة GeoFarm الزراعية الذكية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .hero-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 5rem;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #E8E6E1, #E8871E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 1.8rem;
+            color: #4A6C5A;
+            font-weight: 400;
+        }
+        .floating-element {
+            position: absolute;
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-element:nth-child(2) { animation-delay: -3s; }
+        .floating-element:nth-child(3) { animation-delay: -6s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(3deg); }
+        }
+        .content-container {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .version-badge {
+            background: rgba(232, 135, 30, 0.2);
+            border: 1px solid #E8871E;
+            color: #E8871E;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-item {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .feature-desc {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-element top-20 right-20">
+        <i class="fas fa-satellite text-4xl text-[#E8871E] opacity-40"></i>
+    </div>
+    <div class="floating-element top-40 left-32">
+        <i class="fas fa-seedling text-3xl text-[#4A6C5A] opacity-50"></i>
+    </div>
+    <div class="floating-element bottom-32 right-40">
+        <i class="fas fa-chart-line text-3xl text-[#E8E6E1] opacity-30"></i>
+    </div>
+
+    <div class="content-container">
+        <div class="text-center max-w-6xl mx-auto px-8">
+            <div class="version-badge">
+                وثيقة المتطلبات الشاملة - إصدار 2.0
+            </div>
+            
+            <h1 class="hero-title mb-6">
+                منصة GeoFarm<br>
+                الزراعية الذكية
+            </h1>
+            
+            <p class="subtitle mb-12">
+                دمج الذكاء الاصطناعي والاستشعار عن بُعد وإنترنت الأشياء<br>
+                لتحقيق الزراعة الذكية المستقبلية
+            </p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-title">ذكاء اصطناعي متقدم</div>
+                    <div class="feature-desc">نماذج تعلم عميق متخصصة في التحليل الزراعي</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <div class="feature-title">استشعار عن بُعد</div>
+                    <div class="feature-desc">مراقبة دقيقة للمحاصيل عبر الأقمار الصناعية</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="feature-title">إنترنت الأشياء</div>
+                    <div class="feature-desc">ربط الحقول بالعالم الرقمي في الوقت الفعلي</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: absolute; bottom: 40px; right: 40px; color: #4A6C5A; font-size: 0.9rem;">
+        نوفمبر 2025 | Manus AI
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

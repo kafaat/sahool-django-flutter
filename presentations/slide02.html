@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول المحتويات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            color: #E8E6E1;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .toc-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .toc-item:hover {
+            background: rgba(232, 135, 30, 0.1);
+            border-color: #E8871E;
+            transform: translateX(-5px);
+        }
+        .toc-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E8871E, #4A6C5A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .toc-content {
+            flex: 1;
+        }
+        .toc-title {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .toc-desc {
+            color: #4A6C5A;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+        .toc-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex items-center justify-center p-8">
+        <div class="toc-container">
+            <h1 class="main-title">
+                <i class="fas fa-list-ul text-[#E8871E] mr-4"></i>
+                جدول المحتويات
+            </h1>
+            
+            <div class="space-y-4">
+                <div class="toc-item">
+                    <div class="toc-number">1</div>
+                    <div class="toc-content">
+                        <div class="toc-title">نظرة عامة على المشروع</div>
+                        <div class="toc-desc">الرؤية، الأهداف، والنموذج التجاري</div>
+                    </div>
+                    <i class="fas fa-eye toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">2</div>
+                    <div class="toc-content">
+                        <div class="toc-title">المعمارية التقنية</div>
+                        <div class="toc-desc">الخدمات المصغرة وقاعدة البيانات</div>
+                    </div>
+                    <i class="fas fa-sitemap toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">3</div>
+                    <div class="toc-content">
+                        <div class="toc-title">واجهات برمجة التطبيقات</div>
+                        <div class="toc-desc">APIs ومعايير التصميم</div>
+                    </div>
+                    <i class="fas fa-code toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">4</div>
+                    <div class="toc-content">
+                        <div class="toc-title">المكونات الأمامية</div>
+                        <div class="toc-desc">React Components وUI/UX</div>
+                    </div>
+                    <i class="fas fa-desktop toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">5</div>
+                    <div class="toc-content">
+                        <div class="toc-title">الخدمات المصغرة</div>
+                        <div class="toc-desc">13 خدمة مصغرة مستقلة</div>
+                    </div>
+                    <i class="fas fa-cubes toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">6</div>
+                    <div class="toc-content">
+                        <div class="toc-title">خطوط أنابيب CI/CD</div>
+                        <div class="toc-desc">أتمتة البناء والنشر</div>
+                    </div>
+                    <i class="fas fa-rocket toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">7</div>
+                    <div class="toc-content">
+                        <div class="toc-title">استراتيجية الاختبار</div>
+                        <div class="toc-desc">هرم الاختبار الشامل</div>
+                    </div>
+                    <i class="fas fa-vial toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">8</div>
+                    <div class="toc-content">
+                        <div class="toc-title">الميزات والوظائف</div>
+                        <div class="toc-desc">GeoChat، التحليل، IoT</div>
+                    </div>
+                    <i class="fas fa-cogs toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">9</div>
+                    <div class="toc-content">
+                        <div class="toc-title">التكاملات والأمان</div>
+                        <div class="toc-desc">خدمات خارجية وأمان النظام</div>
+                    </div>
+                    <i class="fas fa-shield-alt toc-icon"></i>
+                </div>
+                
+                <div class="toc-item">
+                    <div class="toc-number">10</div>
+                    <div class="toc-content">
+                        <div class="toc-title">خطة التنفيذ</div>
+                        <div class="toc-desc">المراحل، الفريق، التكلفة</div>
+                    </div>
+                    <i class="fas fa-calendar-alt toc-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database with PostGIS
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: sahook_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sahook_db
+      POSTGRES_USER: sahook_user
+      POSTGRES_PASSWORD: sahook_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./backups:/backups
+    ports:
+      - "5432:5432"
+    networks:
+      - sahook_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sahook_user -d sahook_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for Caching and Sessions
+  redis:
+    image: redis:7-alpine
+    container_name: sahook_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - sahook_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Django Backend Application
+  backend:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook_backend
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-False}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-dev-key-change-in-production}
+      DB_HOST: postgres
+      DB_NAME: sahook_db
+      DB_USER: sahook_user
+      DB_PASSWORD: sahook_password
+      DB_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      EMAIL_HOST: ${EMAIL_HOST:-smtp.gmail.com}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+      SENTINEL_HUB_CLIENT_ID: ${SENTINEL_HUB_CLIENT_ID}
+      SENTINEL_HUB_CLIENT_SECRET: ${SENTINEL_HUB_CLIENT_SECRET}
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
+      FCM_API_KEY: ${FCM_API_KEY}
+    volumes:
+      - ../sahool-backend:/app
+      - media_files:/app/media
+      - static_files:/app/staticfiles
+      - logs:/app/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - sahook_network
+    command: >
+      sh -c "
+        python manage.py makemigrations &&
+        python manage.py migrate &&
+        python manage.py collectstatic --noinput &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+
+  # Celery Worker for Background Tasks
+  celery_worker:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook_celery_worker
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-False}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-dev-key-change-in-production}
+      DB_HOST: postgres
+      DB_NAME: sahook_db
+      DB_USER: sahook_user
+      DB_PASSWORD: sahook_password
+      DB_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+      SENTINEL_HUB_CLIENT_ID: ${SENTINEL_HUB_CLIENT_ID}
+      SENTINEL_HUB_CLIENT_SECRET: ${SENTINEL_HUB_CLIENT_SECRET}
+    volumes:
+      - ../sahool-backend:/app
+      - media_files:/app/media
+      - logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    networks:
+      - sahook_network
+    command: celery -A config worker --loglevel=info --concurrency=4
+
+  # Celery Beat for Scheduled Tasks
+  celery_beat:
+    build:
+      context: ../sahool-backend
+      dockerfile: Dockerfile
+    container_name: sahook_celery_beat
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG:-False}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-sahool-dev-key-change-in-production}
+      DB_HOST: postgres
+      DB_NAME: sahook_db
+      DB_USER: sahook_user
+      DB_PASSWORD: sahook_password
+      DB_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY}
+      SENTINEL_HUB_CLIENT_ID: ${SENTINEL_HUB_CLIENT_ID}
+      SENTINEL_HUB_CLIENT_SECRET: ${SENTINEL_HUB_CLIENT_SECRET}
+    volumes:
+      - ../sahool-backend:/app
+      - media_files:/app/media
+      - logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    networks:
+      - sahook_network
+    command: celery -A config beat --loglevel=info
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: sahook_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - static_files:/app/staticfiles:ro
+      - media_files:/app/media:ro
+      - logs:/var/log/nginx
+    depends_on:
+      - backend
+      - flutter_web
+    networks:
+      - sahook_network
+
+  # Flutter Web Application
+  flutter_web:
+    build:
+      context: ../sahool-mobile
+      dockerfile: Dockerfile.web
+    container_name: sahook_flutter_web
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../sahool-mobile:/app
+    networks:
+      - sahook_network
+
+  # pgAdmin for Database Management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sahook_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@sahool.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin123}
+      PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'True'
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - sahook_network
+
+  # Redis Commander for Redis Management
+  redis_commander:
+    image: rediscommander/redis-commander:latest
+    container_name: sahook_redis_commander
+    restart: unless-stopped
+    environment:
+      REDIS_HOSTS: local:redis:6379
+      REDIS_PASSWORD: ''
+      HTTP_USER: ${REDIS_COMMANDER_USER:-admin}
+      HTTP_PASSWORD: ${REDIS_COMMANDER_PASSWORD:-admin123}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - sahook_network
+
+  # File Storage Service (MinIO)
+  minio:
+    image: minio/minio:latest
+    container_name: sahook_minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD:-minioadmin123}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - sahook_network
+
+  # Monitoring - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: sahook_prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - sahook_network
+
+  # Monitoring - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: sahook_grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin123}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    networks:
+      - sahook_network
+
+  # AI/ML Service
+  ml_service:
+    build:
+      context: ../sahool-ml
+      dockerfile: Dockerfile
+    container_name: sahook_ml_service
+    restart: unless-stopped
+    environment:
+      ML_MODEL_PATH: /models
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      GPU_ENABLED: ${GPU_ENABLED:-false}
+    volumes:
+      - ../sahool-ml:/app
+      - ml_models:/models
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+    networks:
+      - sahook_network
+
+  # IoT Gateway Service
+  iot_gateway:
+    build:
+      context: ../sahool-iot
+      dockerfile: Dockerfile
+    container_name: sahook_iot_gateway
+    restart: unless-stopped
+    environment:
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      DJANGO_API_URL: http://backend:8000
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    depends_on:
+      - redis
+      - backend
+    networks:
+      - sahook_network
+
+  # MQTT Broker
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: sahook_mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9002:9001"
+    volumes:
+      - ./mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mqtt/passwd:/mosquitto/config/passwd:ro
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_logs:/mosquitto/log
+    networks:
+      - sahook_network
+
+  # Email Service
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: sahook_mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - sahook_network
+
+volumes:
+  postgres_data:
+  redis_data:
+  media_files:
+  static_files:
+  logs:
+  pgadmin_data:
+  prometheus_data:
+  grafana_data:
+  minio_data:
+  ml_models:
+  mosquitto_data:
+  mosquitto_logs:
+
+networks:
+  sahook_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

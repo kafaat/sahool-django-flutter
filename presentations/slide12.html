@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الميزات والوظائف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .features-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .feature-category {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .category-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .feature-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .feature-desc {
+            color: #E8E6E1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .feature-list {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-item {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #E8871E;
+            display: block;
+        }
+        .stat-label {
+            color: #E8E6E1;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-cogs text-[#E8871E] mr-4"></i>
+            الميزات والوظائف
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="features-container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">13</span>
+                        <div class="stat-label">مكون أمامي</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <div class="stat-label">ميزة GeoChat</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <div class="stat-label">مؤشر نباتي</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6</span>
+                        <div class="stat-label">نوع مستشعر IoT</div>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-comments text-[#E8871E]"></i>
+                        ميزات GeoChat Core
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-language"></i></div>
+                                <div class="feature-name">المحادثة الذكية</div>
+                            </div>
+                            <div class="feature-desc">واجهة محادثة طبيعية باللغة العربية للتفاعل مع الصور الفضائية</div>
+                            <div class="feature-list">
+                                • فهم الأسئلة بالعربية والإنجليزية<br>
+                                • وصف المشهد الكامل<br>
+                                • تصنيف المشهد<br>
+                                • قبول إحداثيات منطقة محددة
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="feature-name">التأريض المكاني</div>
+                            </div>
+                            <div class="feature-desc">القدرة على تحديد مواقع الأشياء في الصور وإرجاع إحداثياتها</div>
+                            <div class="feature-list">
+                                • الإشارة إلى مواقع الأشياء<br>
+                                • إرجاع إحداثيات الأشياء<br>
+                                • كشف الأشياء بالإشارة<br>
+                                • عرض الإحداثيات بشكل مرئي
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-image"></i></div>
+                                <div class="feature-name">معالجة الصور عالية الدقة</div>
+                            </div>
+                            <div class="feature-desc">القدرة على معالجة صور فضائية عالية الدقة (512x512 إلى 2048x2048)</div>
+                            <div class="feature-list">
+                                • تقسيم الصورة إلى أجزاء<br>
+                                • معالجة كل جزء بشكل مستقل<br>
+                                • دمج النتائج للحصول على تمثيل كامل
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                                <div class="feature-name">تحليل متعدد المصادر</div>
+                            </div>
+                            <div class="feature-desc">دمج نتائج تحليلات متعددة للحصول على تمثيل كامل للمزرعة</div>
+                            <div class="feature-list">
+                                • تحليل الصور الفضائية<br>
+                                • بيانات الطقس<br>
+                                • قراءات المستشعرات<br>
+                                • التوصيات الذكية
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-chart-line text-[#E8871E]"></i>
+                        التحليل الجغرافي والزراعي
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-map"></i></div>
+                                <div class="feature-name">كشف حدود الحقول (FIBOA)</div>
+                            </div>
+                            <div class="feature-desc">كشف تلقائي لحدود الحقول الزراعية من الصور الفضائية</div>
+                            <div class="feature-list">
+                                • كشف تلقائي بدقة عالية<br>
+                                • تغطية عالمية<br>
+                                • تقليل العمل اليدوي<br>
+                                • تحسين دقة حساب المساحات
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                                <div class="feature-name">التحليل الزمني</div>
+                            </div>
+                            <div class="feature-desc">تحليل التغيرات في المحاصيل عبر الزمن باستخدام السلاسل الزمنية</div>
+                            <div class="feature-list">
+                                • جلب صور Sentinel-2 التاريخية<br>
+                                • حساب مؤشرات النباتات<br>
+                                • كشف الاتجاهات والشذوذات<br>
+                                • التنبؤ بالمحصول
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                                <div class="feature-name">مؤشرات النباتات</div>
+                            </div>
+                            <div class="feature-desc">حساب مؤشرات نباتية متعددة من الصور الفضائية</div>
+                            <div class="feature-list">
+                                • NDVI - مؤشر الغطاء النباتي<br>
+                                • EVI - مؤشر الغطاء النباتي المحسن<br>
+                                • SAVI - مؤشر الغطاء النباتي المضبوط<br>
+                                • NDWI - مؤشر ماء النباتات
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="feature-name">كشف المحاصيل المتخصص</div>
+                            </div>
+                            <div class="feature-desc">نموذج متخصص لكشف الشعير وتحليل صحته (CROPUP)</div>
+                            <div class="feature-list">
+                                • تصنيف دقيق للشعير<br>
+                                • تحديد مرحلة النمو<br>
+                                • تقييم الصحة<br>
+                                • كشف الأمراض المحتملة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

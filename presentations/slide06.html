@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قاعدة البيانات والتخزين</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .db-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .db-type {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .db-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .db-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .db-card {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .db-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+        }
+        .db-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .db-desc {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .strategy-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .strategy-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .strategy-content {
+            color: #E8E6E1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+        .table-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .table-category {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .table-title {
+            color: #E8871E;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .table-list {
+            color: #E8E6E1;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-database text-[#E8871E] mr-4"></i>
+            قاعدة البيانات والتخزين
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="db-container">
+                <div class="strategy-section">
+                    <div class="strategy-title">استراتيجية قواعد البيانات</div>
+                    <div class="strategy-content">
+                        تتبنى المنصة استراتيجية <span class="highlight">Database per Service</span>، حيث تمتلك كل خدمة مصغرة 
+                        قاعدة بياناتها الخاصة أو schema منفصل. هذا يضمن استقلالية الخدمات ويمنع الاعتماد المباشر على بيانات خدمات أخرى.
+                    </div>
+                </div>
+
+                <div class="db-grid">
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-database text-[#E8871E]"></i>
+                            PostgreSQL
+                        </div>
+                        <div class="db-desc">قاعدة بيانات علائقية قوية للبيانات المنظمة والمعاملات المعقدة</div>
+                    </div>
+
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-map text-[#E8871E]"></i>
+                            PostGIS
+                        </div>
+                        <div class="db-desc">امتداد جغرافي لـ PostgreSQL للبيانات المكانية والخرائط</div>
+                    </div>
+
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-chart-line text-[#E8871E]"></i>
+                            InfluxDB
+                        </div>
+                        <div class="db-desc">قاعدة بيانات مخصصة لسلاسل الوقت وقراءات المستشعرات</div>
+                    </div>
+
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-memory text-[#E8871E]"></i>
+                            Redis
+                        </div>
+                        <div class="db-desc">مخزن مؤقت في الذاكرة لتحسين الأداء وتقليل الاستجابة</div>
+                    </div>
+
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-cloud text-[#E8871E]"></i>
+                            AWS S3
+                        </div>
+                        <div class="db-desc">تخزين كائنات للصور الفضائية والملفات الكبيرة</div>
+                    </div>
+
+                    <div class="db-card">
+                        <div class="db-name">
+                            <i class="fas fa-search text-[#E8871E]"></i>
+                            Elasticsearch
+                        </div>
+                        <div class="db-desc">محرك بحث قوي للبيانات النصية والتحليلات</div>
+                    </div>
+                </div>
+
+                <div class="db-type">
+                    <div class="db-title">
+                        <i class="fas fa-table text-[#E8871E]"></i>
+                        الجداول الرئيسية
+                    </div>
+                    <div class="table-grid">
+                        <div class="table-category">
+                            <div class="table-title">GeoChat Core</div>
+                            <div class="table-list">
+                                • geochat_sessions<br>
+                                • geochat_messages<br>
+                                • geochat_image_analysis
+                            </div>
+                        </div>
+
+                        <div class="table-category">
+                            <div class="table-title">البيانات الجغرافية</div>
+                            <div class="table-list">
+                                • field_boundaries_fiboa<br>
+                                • sentinel2_timeseries<br>
+                                • vegetation_indices
+                            </div>
+                        </div>
+
+                        <div class="table-category">
+                            <div class="table-title">IoT والطقس</div>
+                            <div class="table-list">
+                                • iot_devices<br>
+                                • sensor_readings<br>
+                                • weather_data<br>
+                                • weather_forecasts
+                            </div>
+                        </div>
+
+                        <div class="table-category">
+                            <div class="table-title">تحليل المحاصيل</div>
+                            <div class="table-list">
+                                • barley_training_data<br>
+                                • disease_database<br>
+                                • disease_detections<br>
+                                • nitrogen_estimates
+                            </div>
+                        </div>
+
+                        <div class="table-category">
+                            <div class="table-title">التوصيات والإشعارات</div>
+                            <div class="table-list">
+                                • fertilizer_recommendations<br>
+                                • irrigation_recommendations<br>
+                                • notifications<br>
+                                • user_preferences
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

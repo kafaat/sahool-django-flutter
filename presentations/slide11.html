@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استراتيجية الاختبار</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .testing-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .pyramid-section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .pyramid-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .pyramid-levels {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .pyramid-level {
+            background: rgba(74, 108, 90, 0.2);
+            border: 2px solid #4A6C5A;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        .pyramid-level.top {
+            width: 200px;
+            background: rgba(232, 135, 30, 0.2);
+            border-color: #E8871E;
+        }
+        .pyramid-level.middle {
+            width: 300px;
+        }
+        .pyramid-level.bottom {
+            width: 400px;
+        }
+        .level-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .level-desc {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+        }
+        .tools-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .tools-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .tool-category {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .tool-title {
+            color: #E8871E;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tool-list {
+            color: #E8E6E1;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .metrics-section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .metrics-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .metric-card {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #E8871E;
+            display: block;
+        }
+        .metric-label {
+            color: #E8E6E1;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-vial text-[#E8871E] mr-4"></i>
+            استراتيجية الاختبار
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="testing-container">
+                <div class="pyramid-section">
+                    <div class="pyramid-title">هرم الاختبار الشامل</div>
+                    <div class="pyramid-levels">
+                        <div class="pyramid-level top">
+                            <div class="level-name">E2E Tests</div>
+                            <div class="level-desc">(قليلة، بطيئة، شاملة)</div>
+                        </div>
+                        <div class="pyramid-level middle">
+                            <div class="level-name">Integration Tests</div>
+                            <div class="level-desc">(متوسطة، معتدلة)</div>
+                        </div>
+                        <div class="pyramid-level bottom">
+                            <div class="level-name">Unit Tests</div>
+                            <div class="level-desc">(كثيرة، سريعة، معزولة)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tools-section">
+                    <div class="tools-title">أدوات ومعايير الاختبار</div>
+                    <div class="tools-grid">
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-code text-[#E8871E]"></i>
+                                Unit Tests
+                            </div>
+                            <div class="tool-list">
+                                • Python: pytest<br>
+                                • Node.js: Jest<br>
+                                • Go: testing package<br>
+                                • Coverage: 80% minimum
+                            </div>
+                        </div>
+
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-puzzle-piece text-[#E8871E]"></i>
+                                Integration Tests
+                            </div>
+                            <div class="tool-list">
+                                • Docker Compose<br>
+                                • FastAPI TestClient<br>
+                                • Supertest (Node.js)<br>
+                                • TestContainers
+                            </div>
+                        </div>
+
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-handshake text-[#E8871E]"></i>
+                                Contract Tests
+                            </div>
+                            <div class="tool-list">
+                                • Pact framework<br>
+                                • Consumer/Provider tests<br>
+                                • API contract validation
+                            </div>
+                        </div>
+
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-desktop text-[#E8871E]"></i>
+                                E2E Tests
+                            </div>
+                            <div class="tool-list">
+                                • Cypress<br>
+                                • Playwright<br>
+                                • Selenium WebDriver<br>
+                                • Real user scenarios
+                            </div>
+                        </div>
+
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-tachometer-alt text-[#E8871E]"></i>
+                                Performance Tests
+                            </div>
+                            <div class="tool-list">
+                                • k6<br>
+                                • JMeter<br>
+                                • Load testing<br>
+                                • Stress testing
+                            </div>
+                        </div>
+
+                        <div class="tool-category">
+                            <div class="tool-title">
+                                <i class="fas fa-shield-alt text-[#E8871E]"></i>
+                                Security Tests
+                            </div>
+                            <div class="tool-list">
+                                • OWASP ZAP<br>
+                                • Trivy<br>
+                                • Snyk<br>
+                                • Vulnerability scanning
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metrics-section">
+                    <div class="metrics-title">معايير الجودة</div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">80%</span>
+                            <div class="metric-label">الحد الأدنى لتغطية الكود</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">500ms</span>
+                            <div class="metric-label">وقت الاستجابة (95%)</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">99.9%</span>
+                            <div class="metric-label">SLA المتاحية</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">0</span>
+                            <div class="metric-label">ثغرات HIGH/CRITICAL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

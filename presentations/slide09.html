@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخدمات المصغرة بالتفصيل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .services-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .service-category {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .category-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .service-card {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .service-icon {
+            width: 35px;
+            height: 35px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1rem;
+        }
+        .service-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .service-tech {
+            color: #4A6C5A;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-desc {
+            color: #E8E6E1;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .principles-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .principles-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .principle-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(232, 135, 30, 0.1);
+            border-radius: 8px;
+        }
+        .principle-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .principle-content {
+            flex: 1;
+        }
+        .principle-title {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .principle-desc {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-cubes text-[#E8871E] mr-4"></i>
+            الخدمات المصغرة بالتفصيل
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="services-container">
+                <div class="service-category">
+                    <div class="category-title">
+                        <i class="fas fa-cogs text-[#E8871E]"></i>
+                        الخدمات الأساسية
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-key"></i></div>
+                                <div class="service-name">Auth Service</div>
+                            </div>
+                            <div class="service-tech">Node.js + TypeScript</div>
+                            <div class="service-desc">تسجيل المستخدمين، تسجيل الدخول، إصدار JWT tokens، إدارة الصلاحيات</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-users"></i></div>
+                                <div class="service-name">User Service</div>
+                            </div>
+                            <div class="service-tech">Go + Gin</div>
+                            <div class="service-desc">إدارة بيانات المستخدمين، المزارع، الحقول، الملفات الشخصية</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-bell"></i></div>
+                                <div class="service-name">Notification Service</div>
+                            </div>
+                            <div class="service-tech">Node.js + TypeScript</div>
+                            <div class="service-desc">إرسال إشعارات (Push, Email, SMS)، إدارة تفضيلات الإشعارات</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-category">
+                    <div class="category-title">
+                        <i class="fas fa-brain text-[#E8871E]"></i>
+                        الخدمات الذكية
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-comments"></i></div>
+                                <div class="service-name">GeoChat Service</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">معالجة اللغة الطبيعية، تنسيق الاستجابات، إدارة السياق</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-image"></i></div>
+                                <div class="service-name">Image Processor</div>
+                            </div>
+                            <div class="service-tech">Python + Flask</div>
+                            <div class="service-desc">معالجة الصور، تطبيق نماذج AI/ML، حساب مؤشرات النباتات</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="service-name">Recommendation Service</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">توليد توصيات الري، الأسمدة، مكافحة الآفات</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-category">
+                    <div class="category-title">
+                        <i class="fas fa-satellite text-[#E8871E]"></i>
+                        خدمات الاستشعار
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-satellite"></i></div>
+                                <div class="service-name">Sentinel Service</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">التكامل مع Sentinel Hub API، جلب الصور الفضائية</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+                                <div class="service-name">FIBOA Service</div>
+                            </div>
+                            <div class="service-tech">Python + Flask</div>
+                            <div class="service-desc">تشغيل نموذج FIBOA، كشف حدود الحقول</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-clock"></i></div>
+                                <div class="service-name">Temporal Analysis</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">تحليل السلاسل الزمنية، كشف الاتجاهات والشذوذات</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-category">
+                    <div class="category-title">
+                        <i class="fas fa-tractor text-[#E8871E]"></i>
+                        خدمات الزراعة
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="service-name">Crop Detection</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">كشف نوع المحصول، مرحلة النمو، تقييم الصحة، كشف الأمراض</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-flask"></i></div>
+                                <div class="service-name">Nitrogen Service</div>
+                            </div>
+                            <div class="service-tech">Python + Flask</div>
+                            <div class="service-desc">تقدير مستويات النيتروجين، توصيات التسميد النيتروجيني</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-cloud-sun"></i></div>
+                                <div class="service-name">Weather Service</div>
+                            </div>
+                            <div class="service-tech">Python + FastAPI</div>
+                            <div class="service-desc">جلب بيانات الطقس، حساب مؤشرات زراعية مناخية</div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-header">
+                                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="service-name">IoT Gateway</div>
+                            </div>
+                            <div class="service-tech">Node.js + TypeScript</div>
+                            <div class="service-desc">استقبال بيانات MQTT، تخزين قراءات المستشعرات، إرسال أوامر</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="principles-section">
+                    <div class="principles-title">مبادئ التصميم والتواصل</div>
+                    <div class="principles-grid">
+                        <div class="principle-item">
+                            <div class="principle-icon"><i class="fas fa-cubes"></i></div>
+                            <div class="principle-content">
+                                <div class="principle-title">استقلالية الخدمات</div>
+                                <div class="principle-desc">كل خدمة مستقلة تماماً ويمكن تطويرها بشكل منفصل</div>
+                            </div>
+                        </div>
+
+                        <div class="principle-item">
+                            <div class="principle-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="principle-content">
+                                <div class="principle-title">التواصل عبر APIs</div>
+                                <div class="principle-desc">HTTP/gRPC للطلبات الفورية، Message Queue للمهام الطويلة</div>
+                            </div>
+                        </div>
+
+                        <div class="principle-item">
+                            <div class="principle-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                            <div class="principle-content">
+                                <div class="principle-title">قابلية التوسع الأفقي</div>
+                                <div class="principle-desc">يمكن توسيع كل خدمة أفقياً حسب الحاجة</div>
+                            </div>
+                        </div>
+
+                        <div class="principle-item">
+                            <div class="principle-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="principle-content">
+                                <div class="principle-title">مرونة الفشل</div>
+                                <div class="principle-desc">فشل خدمة واحدة لا يؤدي إلى توقف النظام بأكمله</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة التنفيذ والخلاصة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .final-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .timeline-section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .timeline-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .timeline-phase {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .phase-number {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        .phase-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .phase-duration {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .phase-desc {
+            color: #E8E6E1;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .cost-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .cost-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .cost-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .cost-card {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .cost-value {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #E8871E;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .cost-label {
+            color: #E8E6E1;
+            font-size: 1rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .team-role {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .role-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .role-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .role-count {
+            color: #4A6C5A;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+        .conclusion {
+            background: linear-gradient(135deg, #E8871E, #4A6C5A);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: #1A1D21;
+        }
+        .conclusion-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .conclusion-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .conclusion-highlight {
+            font-weight: 700;
+            background: rgba(26, 29, 33, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-calendar-alt text-[#E8871E] mr-4"></i>
+            خطة التنفيذ والخلاصة
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="final-container">
+                <div class="timeline-section">
+                    <div class="timeline-title">المراحل والجدول الزمني (12 شهر)</div>
+                    <div class="timeline-grid">
+                        <div class="timeline-phase">
+                            <div class="phase-number">1</div>
+                            <div class="phase-name">الأساسيات</div>
+                            <div class="phase-duration">شهر 1-2</div>
+                            <div class="phase-desc">البنية التحتية، Core Services، GeoChat الأساسي</div>
+                        </div>
+
+                        <div class="timeline-phase">
+                            <div class="phase-number">2</div>
+                            <div class="phase-name">التحليل الجغرافي</div>
+                            <div class="phase-duration">شهر 3-4</div>
+                            <div class="phase-desc">Image Processor، Sentinel، FIBOA، Temporal Analysis</div>
+                        </div>
+
+                        <div class="timeline-phase">
+                            <div class="phase-number">3</div>
+                            <div class="phase-name">IoT والطقس</div>
+                            <div class="phase-duration">شهر 5-6</div>
+                            <div class="phase-desc">IoT Gateway، Weather Service، MQTT، OpenWeatherMap</div>
+                        </div>
+
+                        <div class="timeline-phase">
+                            <div class="phase-number">4</div>
+                            <div class="phase-name">الذكاء الزراعي</div>
+                            <div class="phase-duration">شهر 7-8</div>
+                            <div class="phase-desc">Crop Detection، Recommendation، Nitrogen، نماذج AI</div>
+                        </div>
+
+                        <div class="timeline-phase">
+                            <div class="phase-number">5</div>
+                            <div class="phase-name">الميزات المتقدمة</div>
+                            <div class="phase-duration">شهر 9-10</div>
+                            <div class="phase-desc">Reports، Inventory، Dashboard متقدم، تحسينات UX</div>
+                        </div>
+
+                        <div class="timeline-phase">
+                            <div class="phase-number">6</div>
+                            <div class="phase-name">الاختبار والنشر</div>
+                            <div class="phase-duration">شهر 11-12</div>
+                            <div class="phase-desc">اختبار شامل، أداء، أمان، نشر إلى الإنتاج</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cost-section">
+                    <div class="cost-title">الفريق المطلوب والتكلفة</div>
+                    <div class="team-grid">
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="role-name">مدير مشروع</div>
+                            <div class="role-count">1</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-desktop"></i></div>
+                            <div class="role-name">مطور واجهة</div>
+                            <div class="role-count">3</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-server"></i></div>
+                            <div class="role-name">مطور باك اند</div>
+                            <div class="role-count">4</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-cogs"></i></div>
+                            <div class="role-name">DevOps</div>
+                            <div class="role-count">2</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-database"></i></div>
+                            <div class="role-name">مهندس بيانات</div>
+                            <div class="role-count">1</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-brain"></i></div>
+                            <div class="role-name">عالم بيانات</div>
+                            <div class="role-count">2</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-robot"></i></div>
+                            <div class="role-name">ML Ops</div>
+                            <div class="role-count">1</div>
+                        </div>
+                        <div class="team-role">
+                            <div class="role-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="role-name">QA Engineer</div>
+                            <div class="role-count">1</div>
+                        </div>
+                    </div>
+
+                    <div class="cost-grid">
+                        <div class="cost-card">
+                            <span class="cost-value">$1.8M</span>
+                            <div class="cost-label">تكاليف التطوير (12 شهر)</div>
+                        </div>
+                        <div class="cost-card">
+                            <span class="cost-value">$480K</span>
+                            <div class="cost-label">تكاليف التشغيل (سنوياً)</div>
+                        </div>
+                        <div class="cost-card">
+                            <span class="cost-value">180%</span>
+                            <div class="cost-label">عائد الاستثمار (السنة 3)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conclusion">
+                    <div class="conclusion-title">
+                        <i class="fas fa-star mr-2"></i>
+                        خلاصة المشروع
+                    </div>
+                    <div class="conclusion-text">
+                        تمثل منصة GeoFarm حلاً متكاملاً ومتطوراً للزراعة الذكية، تجمع بين أحدث تقنيات 
+                        <span class="highlight">الذكاء الاصطناعي</span> والاستشعار عن بعد وإنترنت الأشياء.
+                    </div>
+                    <div class="conclusion-highlight">
+                        خارطة طريق شاملة لبناء منصة المستقبل الزراعي
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

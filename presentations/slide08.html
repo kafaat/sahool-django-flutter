@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المكونات الأمامية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .frontend-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .component-card {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .component-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.2);
+            transform: translateY(-3px);
+        }
+        .component-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .component-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .component-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .component-desc {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .tech-stack {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .tech-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .tech-item {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .tech-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .tech-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .design-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .design-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .design-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .design-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #E8E6E1;
+            font-size: 1rem;
+        }
+        .feature-dot {
+            width: 8px;
+            height: 8px;
+            background: #E8871E;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-desktop text-[#E8871E] mr-4"></i>
+            المكونات الأمامية
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="frontend-container">
+                <div class="components-grid">
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-comments"></i></div>
+                            <div class="component-name">GeoChatBox</div>
+                        </div>
+                        <div class="component-desc">مكون صندوق الدردشة الذكية للتفاعل مع GeoChat</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="component-name">FieldBoundaryDetector</div>
+                        </div>
+                        <div class="component-desc">مكون كشف حدود الحقول تلقائياً</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="component-name">TemporalAnalysisChart</div>
+                        </div>
+                        <div class="component-desc">مخطط التحليل الزمني لمؤشرات النباتات</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-seedling"></i></div>
+                            <div class="component-name">CropSpecificDetection</div>
+                        </div>
+                        <div class="component-desc">كشف المحاصيل المحددة وتحليل صحتها</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-cloud-sun"></i></div>
+                            <div class="component-name">WeatherWidget</div>
+                        </div>
+                        <div class="component-desc">عرض بيانات الطقس الحالية والتوقعات</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-microchip"></i></div>
+                            <div class="component-name">IoTDeviceCard</div>
+                        </div>
+                        <div class="component-desc">بطاقة عرض جهاز IoT وحالته</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="component-name">FarmDashboard</div>
+                        </div>
+                        <div class="component-desc">لوحة معلومات المزرعة الرئيسية</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-map"></i></div>
+                            <div class="component-name">FieldHealthMap</div>
+                        </div>
+                        <div class="component-desc">خريطة صحة الحقول بالألوان</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="component-name">RecommendationCard</div>
+                        </div>
+                        <div class="component-desc">بطاقة عرض توصية زراعية</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-satellite"></i></div>
+                            <div class="component-name">SatelliteImageViewer</div>
+                        </div>
+                        <div class="component-desc">عارض صور الأقمار الصناعية</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-bell"></i></div>
+                            <div class="component-name">AlertNotificationPanel</div>
+                        </div>
+                        <div class="component-desc">لوحة عرض التنبيهات والإشعارات</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-tint"></i></div>
+                            <div class="component-name">IrrigationScheduler</div>
+                        </div>
+                        <div class="component-desc">جدولة الري</div>
+                    </div>
+
+                    <div class="component-card">
+                        <div class="component-header">
+                            <div class="component-icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="component-name">ReportGenerator</div>
+                        </div>
+                        <div class="component-desc">مولد التقارير</div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <div class="tech-title">المكدس التقني للواجهة</div>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fab fa-react"></i></div>
+                            <div class="tech-name">React</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fab fa-js-square"></i></div>
+                            <div class="tech-name">TypeScript</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-paint-brush"></i></div>
+                            <div class="tech-name">TailwindCSS</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-puzzle-piece"></i></div>
+                            <div class="tech-name">Shadcn/ui</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="design-section">
+                    <div class="design-title">مبادئ تصميم UI/UX</div>
+                    <div class="design-features">
+                        <div class="design-feature">
+                            <div class="feature-dot"></div>
+                            <span>تصميم متجاوب لجميع الأجهزة</span>
+                        </div>
+                        <div class="design-feature">
+                            <div class="feature-dot"></div>
+                            <span>دعم كامل للغة العربية والإنجليزية</span>
+                        </div>
+                        <div class="design-feature">
+                            <div class="feature-dot"></div>
+                            <span>واجهة مستخدم مبسطة وسهلة الاستخدام</span>
+                        </div>
+                        <div class="design-feature">
+                            <div class="feature-dot"></div>
+                            <span>تصميم مشابه لمنصات John Deere وFarmonaut</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

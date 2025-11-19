@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT والطقس والتوصيات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .features-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .feature-category {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .category-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .feature-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .feature-desc {
+            color: #E8E6E1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .feature-list {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+        .iot-devices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .device-item {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .device-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .device-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-network-wired text-[#E8871E] mr-4"></i>
+            IoT والطقس والتوصيات
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="features-container">
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-microchip text-[#E8871E]"></i>
+                        ميزات IoT
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                                <div class="feature-name">إدارة الأجهزة</div>
+                            </div>
+                            <div class="feature-desc">إدارة أجهزة إنترنت الأشياء المختلفة المرتبطة بالمزارع</div>
+                            <div class="iot-devices">
+                                <div class="device-item">
+                                    <div class="device-icon"><i class="fas fa-thermometer-half"></i></div>
+                                    <div class="device-name">مستشعرات</div>
+                                </div>
+                                <div class="device-item">
+                                    <div class="device-icon"><i class="fas fa-tractor"></i></div>
+                                    <div class="device-name">معدات</div>
+                                </div>
+                                <div class="device-item">
+                                    <div class="device-icon"><i class="fas fa-toggle-on"></i></div>
+                                    <div class="device-name">أجهزة تحكم</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="feature-name">قراءات المستشعرات</div>
+                            </div>
+                            <div class="feature-desc">استقبال وتخزين قراءات المستشعرات في الوقت الفعلي</div>
+                            <div class="feature-list">
+                                • رطوبة التربة<br>
+                                • درجة حرارة التربة والهواء<br>
+                                • رطوبة الهواء<br>
+                                • الأشعة فوق البنفسجية<br>
+                                • الضغط الجوي وسرعة الرياح
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-remote-control"></i></div>
+                                <div class="feature-name">التحكم عن بعد</div>
+                            </div>
+                            <div class="feature-desc">إرسال أوامر تحكم للأجهزة عن بعد</div>
+                            <div class="feature-list">
+                                • بدء/إيقاف الري<br>
+                                • تحديد مدة الري<br>
+                                • تشغيل/إيقاف المعدات<br>
+                                • تتبع حالة الأمر
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                <div class="feature-name">تنبيهات IoT</div>
+                            </div>
+                            <div class="feature-desc">تنبيهات تلقائية عند حدوث أحداث معينة</div>
+                            <div class="feature-list">
+                                • رطوبة منخفضة<br>
+                                • حرارة عالية<br>
+                                • بطارية منخفضة<br>
+                                • فقدان الاتصال<br>
+                                • قراءة شاذة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-cloud-sun text-[#E8871E]"></i>
+                        ميزات الطقس
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-thermometer-half"></i></div>
+                                <div class="feature-name">الطقس الحالي</div>
+                            </div>
+                            <div class="feature-desc">بيانات الطقس الحالية للمزرعة</div>
+                            <div class="feature-list">
+                                • درجة الحرارة والرطوبة<br>
+                                • الضغط الجوي وسرعة الرياح<br>
+                                • الهطول والغطاء السحابي<br>
+                                • مؤشر الأشعة فوق البنفسجية
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                                <div class="feature-name">توقعات الطقس</div>
+                            </div>
+                            <div class="feature-desc">توقعات الطقس للأيام القادمة</div>
+                            <div class="feature-list">
+                                • توقعات ساعية (48 ساعة)<br>
+                                • توقعات يومية (7 أيام)<br>
+                                • توقعات أسبوعية<br>
+                                • احتمالية وكمية الهطول
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                <div class="feature-name">تنبيهات الطقس</div>
+                            </div>
+                            <div class="feature-desc">تنبيهات عن أحوال جوية قاسية</div>
+                            <div class="feature-list">
+                                • صقيع وموجة حر<br>
+                                • عواصف وأمطار غزيرة<br>
+                                • رياح قوية وبرد<br>
+                                • مستويات مختلفة من الخطورة
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="feature-name">البيانات الزراعية المناخية</div>
+                            </div>
+                            <div class="feature-desc">مؤشرات مناخية مفيدة للزراعة</div>
+                            <div class="feature-list">
+                                • ET0 - التبخر والنتح المرجعي<br>
+                                • GDD - درجات النمو اليومية<br>
+                                • الهطول التراكمي<br>
+                                • أيام الصقيع
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

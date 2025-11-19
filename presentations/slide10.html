@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطوط أنابيب CI/CD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .cicd-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 12px;
+        }
+        .pipeline-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+        .stage-icon {
+            width: 60px;
+            height: 60px;
+            background: #E8871E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.5rem;
+        }
+        .stage-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .stage-arrow {
+            color: #E8871E;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+        .strategy-section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .strategy-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .strategy-card {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .strategy-icon {
+            font-size: 2rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+        }
+        .strategy-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .strategy-desc {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .quality-section {
+            background: rgba(74, 108, 90, 0.2);
+            border: 1px solid rgba(74, 108, 90, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quality-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .quality-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .metric-item {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            display: block;
+        }
+        .metric-label {
+            color: #E8E6E1;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-rocket text-[#E8871E] mr-4"></i>
+            خطوط أنابيب CI/CD
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="cicd-container">
+                <div class="pipeline-flow">
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-code"></i></div>
+                        <div class="stage-name">Build</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-vial"></i></div>
+                        <div class="stage-name">Unit Tests</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-search"></i></div>
+                        <div class="stage-name">Static Analysis</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="stage-name">Security Scan</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-cloud"></i></div>
+                        <div class="stage-name">Deploy Staging</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stage-name">Integration Tests</div>
+                    </div>
+                    <div class="stage-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="pipeline-stage">
+                        <div class="stage-icon"><i class="fas fa-globe"></i></div>
+                        <div class="stage-name">Deploy Production</div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <div class="strategy-title">استراتيجيات النشر</div>
+                    <div class="strategies-grid">
+                        <div class="strategy-card">
+                            <div class="strategy-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="strategy-name">Blue/Green Deployment</div>
+                            <div class="strategy-desc">نشر النسخة الجديدة جنباً إلى جنب مع القديمة ثم التحويل الكامل</div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="strategy-name">Canary Deployment</div>
+                            <div class="strategy-desc">نشر لنسبة صغيرة من المستخدمين أولاً ثم زيادة تدريجياً</div>
+                        </div>
+
+                        <div class="strategy-card">
+                            <div class="strategy-icon"><i class="fas fa-sync-alt"></i></div>
+                            <div class="strategy-name">Rolling Update</div>
+                            <div class="strategy-desc">استبدال النسخ القديمة بالجديدة تدريجياً، pod واحد في كل مرة</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quality-section">
+                    <div class="quality-title">معايير الجودة والأمان</div>
+                    <div class="quality-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">80%</span>
+                            <div class="metric-label">الحد الأدنى لتغطية الكود</div>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">500ms</span>
+                            <div class="metric-label">وقت الاستجابة (95%)</div>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">99.9%</span>
+                            <div class="metric-label">SLA المتاحية</div>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">0</span>
+                            <div class="metric-label">ثغرات HIGH/CRITICAL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

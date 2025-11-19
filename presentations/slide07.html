@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واجهات برمجة التطبيقات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .api-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .api-card {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .api-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.2);
+            transform: translateY(-3px);
+        }
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .api-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .api-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .api-desc {
+            color: #4A6C5A;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .standards-section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .standards-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .standard-item {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .standard-title {
+            color: #E8871E;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .standard-desc {
+            color: #E8E6E1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+        .api-count {
+            background: rgba(232, 135, 30, 0.2);
+            border: 2px solid #E8871E;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .count-number {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #E8871E;
+            display: block;
+        }
+        .count-label {
+            color: #E8E6E1;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-code text-[#E8871E] mr-4"></i>
+            واجهات برمجة التطبيقات
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="api-container">
+                <div class="api-count">
+                    <span class="count-number">13</span>
+                    <div class="count-label">API Router رئيسي</div>
+                </div>
+
+                <div class="api-grid">
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-comments"></i></div>
+                            <div class="api-name">GeoChatRouter</div>
+                        </div>
+                        <div class="api-desc">إدارة جلسات المحادثة وتحليل الصور الفضائية</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="api-name">FIBOARouter</div>
+                        </div>
+                        <div class="api-desc">كشف حدود الحقول الزراعية تلقائياً</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="api-name">Sentinel2TimeSeriesRouter</div>
+                        </div>
+                        <div class="api-desc">تحليل السلاسل الزمنية لصور Sentinel-2</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="api-name">BarleyTrainingRouter</div>
+                        </div>
+                        <div class="api-desc">تدريب نماذج متخصصة للمحاصيل</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-cloud-sun"></i></div>
+                            <div class="api-name">WeatherRouter</div>
+                        </div>
+                        <div class="api-desc">توفير بيانات الطقس والتوقعات</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-network-wired"></i></div>
+                            <div class="api-name">IoTRouter</div>
+                        </div>
+                        <div class="api-desc">إدارة أجهزة IoT والتحكم بها</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="api-name">RecommendationsRouter</div>
+                        </div>
+                        <div class="api-desc">توليد التوصيات الزراعية</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-flask"></i></div>
+                            <div class="api-name">NitrogenRouter</div>
+                        </div>
+                        <div class="api-desc">تقدير مستويات النيتروجين</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="api-name">DashboardRouter</div>
+                        </div>
+                        <div class="api-desc">توفير بيانات لوحة المعلومات</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-file-alt"></i></div>
+                            <div class="api-name">ReportsRouter</div>
+                        </div>
+                        <div class="api-desc">توليد التقارير</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-tractor"></i></div>
+                            <div class="api-name">FarmsRouter</div>
+                        </div>
+                        <div class="api-desc">إدارة المزارع والحقول</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-drone"></i></div>
+                            <div class="api-name">DroneImagesRouter</div>
+                        </div>
+                        <div class="api-desc">إدارة صور الطائرات بدون طيار</div>
+                    </div>
+
+                    <div class="api-card">
+                        <div class="api-header">
+                            <div class="api-icon"><i class="fas fa-boxes"></i></div>
+                            <div class="api-name">InventoryRouter</div>
+                        </div>
+                        <div class="api-desc">إدارة المخزون الزراعي</div>
+                    </div>
+                </div>
+
+                <div class="standards-section">
+                    <div class="standards-title">معايير تصميم APIs</div>
+                    <div class="standards-grid">
+                        <div class="standard-item">
+                            <div class="standard-title">
+                                <i class="fas fa-key text-[#E8871E]"></i>
+                                المصادقة والتفويض
+                            </div>
+                            <div class="standard-desc">
+                                JWT tokens مع RBAC (Role-Based Access Control) لإدارة الصلاحيات بشكل آمن
+                            </div>
+                        </div>
+
+                        <div class="standard-item">
+                            <div class="standard-title">
+                                <i class="fas fa-exclamation-triangle text-[#E8871E]"></i>
+                                معالجة الأخطاء
+                            </div>
+                            <div class="standard-desc">
+                                معيار موحد لمعالجة الأخطاء مع أكواد واضحة ورسائل توضيحية مفصلة
+                            </div>
+                        </div>
+
+                        <div class="standard-item">
+                            <div class="standard-title">
+                                <i class="fas fa-list text-[#E8871E]"></i>
+                                Pagination
+                            </div>
+                            <div class="standard-desc">
+                                دعم كامل للصفحات مع limit وoffset لجميع endpoints التي ترجع قوائم طويلة
+                            </div>
+                        </div>
+
+                        <div class="standard-item">
+                            <div class="standard-title">
+                                <i class="fas fa-tachometer-alt text-[#E8871E]"></i>
+                                Rate Limiting
+                            </div>
+                            <div class="standard-desc">
+                                تطبيق حدود استخدام لمنع الإساءة مع حدود مختلفة حسب خطة الاشتراك
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

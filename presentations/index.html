@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة سهول - نظام إدارة المدارس الشامل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    </style>
+</head>
+<body class="bg-gray-50" x-data="sahoolApp()">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold text-blue-600">
+                        <i class="fas fa-graduation-cap ml-2"></i>
+                        منصة سهول
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">الخدمات</a>
+                    <a href="#features" class="text-gray-700 hover:text-blue-600 transition-colors">المميزات</a>
+                    <a href="#documentation" class="text-gray-700 hover:text-blue-600 transition-colors">الوثائق</a>
+                    <a href="https://github.com/kafaat/sahool-django-flutter" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fab fa-github ml-2"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-bold mb-6">
+                        نظام إدارة المدارس الذكي
+                        <span class="block text-yellow-300">منصة سهول</span>
+                    </h1>
+                    <p class="text-xl mb-8 leading-relaxed">
+                        منصة متكاملة لإدارة جميع جوانب العملية التعليمية، من إدارة الطلاب والمعلمين إلى الامتحانات والحضور، مع مميزات الذكاء الاصطناعي والتعلم الرقمي.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button @click="showDemo()" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                            <i class="fas fa-play ml-2"></i>
+                            تجربة النظام
+                        </button>
+                        <a href="SAHOOL_README.md" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                            <i class="fas fa-book ml-2"></i>
+                            دليل الاستخدام
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/20 rounded-lg p-4 text-center">
+                                <i class="fas fa-users text-3xl mb-2"></i>
+                                <div class="text-sm">إدارة الطلاب</div>
+                            </div>
+                            <div class="bg-white/20 rounded-lg p-4 text-center">
+                                <i class="fas fa-chalkboard-teacher text-3xl mb-2"></i>
+                                <div class="text-sm">إدارة المعلمين</div>
+                            </div>
+                            <div class="bg-white/20 rounded-lg p-4 text-center">
+                                <i class="fas fa-calendar-alt text-3xl mb-2"></i>
+                                <div class="text-sm">الجداول الدراسية</div>
+                            </div>
+                            <div class="bg-white/20 rounded-lg p-4 text-center">
+                                <i class="fas fa-chart-line text-3xl mb-2"></i>
+                                <div class="text-sm">التحليلات الذكية</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">الخدمات الأساسية</h2>
+                <p class="text-xl text-gray-600">حلول متكاملة لجميع احتياجات المدرسة</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Student Management -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-graduate text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">إدارة الطلاب</h3>
+                    <p class="text-gray-600 mb-6">سجلات الطلاب الكاملة، التسجيل، الانتقال بين الصفوف، وحفظ الملفات الأكاديمية والشخصية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>سجلات أكاديمية مفصلة</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>نظام التسجيل الإلكتروني</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>حفظ الملفات والوثائق</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تتبع التقدم الأكاديمي</li>
+                    </ul>
+                </div>
+
+                <!-- Teacher Management -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">إدارة المعلمين</h3>
+                    <p class="text-gray-600 mb-6">بيانات المعلمين، المواد التي يدرسونها، الجداول الدراسية، وتقييم الأداء.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>بيانات المعلمين الشخصية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>توزيع المواد الدراسية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>جداول الحصص</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تقييم الأداء</li>
+                    </ul>
+                </div>
+
+                <!-- Class Management -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-school text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">إدارة الفصول</h3>
+                    <p class="text-gray-600 mb-6">إدارة الفصول الدراسية، توزيع الطلاب، الجداول الدراسية، والفصول الافتراضية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>إدارة الفصول الدراسية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>توزيع الطلاب على الفصول</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>الجداول الدراسية الذكية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>الفصول الافتراضية</li>
+                    </ul>
+                </div>
+
+                <!-- Exam Management -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clipboard-check text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">نظام الامتحانات</h3>
+                    <p class="text-gray-600 mb-6">إنشاء الامتحانات، التصحيح الآلي، النتائج الفورية، والتحليلات التفصيلية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>أنواع متعددة من الأسئلة</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تصحيح آلي ذكي</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>نتائج فورية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تحليلات تفصيلية</li>
+                    </ul>
+                </div>
+
+                <!-- Attendance System -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-check text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">نظام الحضور</h3>
+                    <p class="text-gray-600 mb-6">تسجيل الحضور والغياب باستخدام QR Code، التتبع اللحظي، والتقارير الشهرية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>مسح QR Code للحضور</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تتبع لحظي للحضور</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تقارير الحضور الشهرية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>إشعارات الغياب</li>
+                    </ul>
+                </div>
+
+                <!-- AI Tutor -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover border border-gray-100">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">المساعد الذكي</h3>
+                    <p class="text-gray-600 mb-6">مساعد ذكي بالذكاء الاصطناعي للإجابة على الأسئلة، شرح المفاهيم، وتقديم توصيات تعليمية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>الإجابة على الأسئلة الأكاديمية</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>شرح المفاهيم الصعبة</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>توصيات تعليمية مخصصة</li>
+                        <li><i class="fas fa-check text-green-500 ml-2"></i>تحليل الأداء الأكاديمي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <i class="fas fa-graduation-cap ml-2"></i>
+                        منصة سهول
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        نظام إدارة مدارس متكامل وشامل، مبني على أحدث التقنيات لتقديم حلول ذكية وفعالة لإدارة جميع جوانب العملية التعليمية.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">الخدمات</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">إدارة الطلاب</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">إدارة المعلمين</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">نظام الامتحانات</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">نظام الحضور</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">المساعد الذكي</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">المميزات</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">تطبيق محمول</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تحليلات ذكية</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">إشعارات فورية</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">أمان وخصوصية</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تخصيص كامل</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">التواصل</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>support@sahool.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+966 123 456 789</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>الرياض، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://github.com/kafaat/sahool-django-flutter" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 منصة سهول. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function sahookApp() {
+        return {
+            dashboardData: {
+                students: 1234,
+                teachers: 89,
+                classes: 45,
+                subjects: 23
+            },
+            
+            showDemo() {
+                alert('سيتم توجيهك إلى صفحة تجربة النظام قريباً!');
+            },
+            
+            downloadLatest() {
+                alert('سيتم تحميل أحدث إصدار من المنصة');
+            },
+            
+            quickDeploy() {
+                alert('سيتم نشر المنصة باستخدام Docker');
+            }
+        }
+    }
+    </script>
+</body>
+</html>

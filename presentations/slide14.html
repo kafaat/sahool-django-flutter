@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التوصيات والأمان والتكاملات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.8rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .final-container {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .section {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .section-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #E8871E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: rgba(232, 230, 225, 0.05);
+            border: 1px solid rgba(232, 230, 225, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #E8871E;
+            background: rgba(232, 135, 30, 0.1);
+            transform: translateY(-2px);
+        }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .feature-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .feature-desc {
+            color: #E8E6E1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .feature-list {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .integration-item {
+            background: rgba(74, 108, 90, 0.1);
+            border: 1px solid rgba(74, 108, 90, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .integration-icon {
+            width: 40px;
+            height: 40px;
+            background: #E8871E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1A1D21;
+            font-size: 1.2rem;
+        }
+        .integration-content {
+            flex: 1;
+        }
+        .integration-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .integration-desc {
+            color: #4A6C5A;
+            font-size: 0.85rem;
+        }
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(74, 108, 90, 0.1);
+            border-radius: 8px;
+            color: #E8E6E1;
+            font-size: 0.9rem;
+        }
+        .security-icon {
+            color: #E8871E;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            color: #E8871E;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-shield-alt text-[#E8871E] mr-4"></i>
+            التوصيات والأمان والتكاملات
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="final-container">
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-lightbulb text-[#E8871E]"></i>
+                        ميزات التوصيات الذكية
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-tint"></i></div>
+                                <div class="feature-name">توصيات الري</div>
+                            </div>
+                            <div class="feature-desc">توصيات ذكية لجدولة الري بناءً على تحليل متعدد العوامل</div>
+                            <div class="feature-list">
+                                • نوع المحصول ومرحلة النمو<br>
+                                • نوع التربة وقراءات الرطوبة<br>
+                                • بيانات الطقس وET0<br>
+                                • الكمية والتوقيت الأمثل
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                                <div class="feature-name">توصيات الأسمدة</div>
+                            </div>
+                            <div class="feature-desc">توصيات تسميد مبنية على تحليل التربة والمحصول</div>
+                            <div class="feature-list">
+                                • تحليل التربة (NPK)<br>
+                                • تقديرات النيتروجين من الصور<br>
+                                • بيانات NDVI<br>
+                                • نوع السماد والكمية والتوقيت
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-bug"></i></div>
+                                <div class="feature-name">مكافحة الآفات</div>
+                            </div>
+                            <div class="feature-desc">توصيات لمكافحة الآفات والأمراض</div>
+                            <div class="feature-list">
+                                • الأمراض المكتشفة<br>
+                                • بيانات الطقس<br>
+                                • تاريخ المكافحة<br>
+                                • نوع المبيد والجرعة والتوقيت
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-header">
+                                <div class="feature-icon"><i class="fas fa-apple-alt"></i></div>
+                                <div class="feature-name">الحصاد الأمثل</div>
+                            </div>
+                            <div class="feature-desc">تحديد وقت الحصاد الأمثل بناءً على مرحلة النضج</div>
+                            <div class="feature-list">
+                                • تحليل مرحلة النمو<br>
+                                • مؤشرات النضج<br>
+                                • توقعات الطقس<br>
+                                • جودة المحصول المتوقعة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-link text-[#E8871E]"></i>
+                        التكاملات الخارجية
+                    </div>
+                    <div class="integrations-grid">
+                        <div class="integration-item">
+                            <div class="integration-icon"><i class="fas fa-satellite"></i></div>
+                            <div class="integration-content">
+                                <div class="integration-name">Sentinel Hub</div>
+                                <div class="integration-desc">جلب صور Sentinel-2 وLandsat، معالجة الصور في السحابة</div>
+                            </div>
+                        </div>
+
+                        <div class="integration-item">
+                            <div class="integration-icon"><i class="fas fa-cloud-sun"></i></div>
+                            <div class="integration-content">
+                                <div class="integration-name">OpenWeatherMap</div>
+                                <div class="integration-desc">بيانات الطقس الحالية والتوقعات والبيانات التاريخية</div>
+                            </div>
+                        </div>
+
+                        <div class="integration-item">
+                            <div class="integration-icon"><i class="fas fa-wifi"></i></div>
+                            <div class="integration-content">
+                                <div class="integration-name">EMQX MQTT</div>
+                                <div class="integration-desc">إدارة اتصالات IoT، استقبال بيانات المستشعرات، إرسال أوامر</div>
+                            </div>
+                        </div>
+
+                        <div class="integration-item">
+                            <div class="integration-icon"><i class="fas fa-cloud"></i></div>
+                            <div class="integration-content">
+                                <div class="integration-name">AWS S3</div>
+                                <div class="integration-desc">تخزين الصور الفضائية، صور الطائرات، التقارير، النماذج المدربة</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-shield-alt text-[#E8871E]"></i>
+                        الأمان والأداء
+                    </div>
+                    <div class="security-features">
+                        <div class="security-item">
+                            <i class="fas fa-key security-icon"></i>
+                            <span>مصادقة JWT tokens مع RBAC</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-lock security-icon"></i>
+                            <span>تشفير البيانات TLS 1.3 وAES-256</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-tachometer-alt security-icon"></i>
+                            <span>Rate limiting وInput validation</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-memory security-icon"></i>
+                            <span>Redis caching وCDN للأداء</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-expand-arrows-alt security-icon"></i>
+                            <span>Horizontal scaling وLoad balancing</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-chart-line security-icon"></i>
+                            <span>Prometheus وGrafana للمراقبة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

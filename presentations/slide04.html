@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النموذج التجاري SaaS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@400;700&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sorts Mill Goudy', serif;
+            background: linear-gradient(135deg, #1A1D21 0%, #0F1316 100%);
+            overflow: hidden;
+            direction: rtl;
+        }
+        .main-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #E8E6E1;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .plan-card {
+            background: rgba(74, 108, 90, 0.1);
+            border: 2px solid rgba(74, 108, 90, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .plan-card:hover {
+            border-color: #E8871E;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(232, 135, 30, 0.2);
+        }
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .plan-name {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #E8E6E1;
+            margin-bottom: 1rem;
+        }
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .plan-period {
+            color: #4A6C5A;
+            font-size: 1rem;
+        }
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        .plan-features li {
+            color: #E8E6E1;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(74, 108, 90, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        .feature-check {
+            color: #E8871E;
+            font-size: 1.1rem;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #E8871E;
+            color: #1A1D21;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .revenue-model {
+            background: rgba(232, 135, 30, 0.1);
+            border: 1px solid rgba(232, 135, 30, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .revenue-title {
+            font-family: 'Quattrocento Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .revenue-sources {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .revenue-item {
+            background: rgba(74, 108, 90, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .revenue-icon {
+            font-size: 1.5rem;
+            color: #E8871E;
+            margin-bottom: 0.5rem;
+        }
+        .revenue-name {
+            color: #E8E6E1;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="h-screen flex flex-col p-8">
+        <h1 class="main-title">
+            <i class="fas fa-chart-line text-[#E8871E] mr-4"></i>
+            النموذج التجاري SaaS
+        </h1>
+        
+        <div class="flex-1 overflow-hidden">
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">الخطة الأساسية</div>
+                        <div class="plan-price">$29</div>
+                        <div class="plan-period">/شهر</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check feature-check"></i>مراقبة حتى 5 حقول زراعية</li>
+                        <li><i class="fas fa-check feature-check"></i>صور فضائية محدثة أسبوعياً</li>
+                        <li><i class="fas fa-check feature-check"></i>تحليل NDVI أساسي</li>
+                        <li><i class="fas fa-check feature-check"></i>محادثة GeoChat (50 استعلام/شهر)</li>
+                        <li><i class="fas fa-check feature-check"></i>تنبيهات الطقس الأساسية</li>
+                        <li><i class="fas fa-check feature-check"></i>تقارير شهرية</li>
+                        <li><i class="fas fa-check feature-check"></i>دعم فني عبر البريد الإلكتروني</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card">
+                    <div class="popular-badge">الأكثر شعبية</div>
+                    <div class="plan-header">
+                        <div class="plan-name">الخطة الاحترافية</div>
+                        <div class="plan-price">$99</div>
+                        <div class="plan-period">/شهر</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check feature-check"></i>جميع ميزات الخطة الأساسية</li>
+                        <li><i class="fas fa-check feature-check"></i>مراقبة حتى 50 حقل زراعي</li>
+                        <li><i class="fas fa-check feature-check"></i>صور فضائية محدثة يومياً</li>
+                        <li><i class="fas fa-check feature-check"></i>تحليل متقدم (NDVI, EVI, SAVI, NDWI)</li>
+                        <li><i class="fas fa-check feature-check"></i>كشف تلقائي لحدود الحقول (FIBOA)</li>
+                        <li><i class="fas fa-check feature-check"></i>محادثة GeoChat غير محدودة</li>
+                        <li><i class="fas fa-check feature-check"></i>كشف الأمراض والآفات</li>
+                        <li><i class="fas fa-check feature-check"></i>دعم فني ذو أولوية (24/7)</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">الخطة المؤسسية</div>
+                        <div class="plan-price">حسب الطلب</div>
+                        <div class="plan-period">Custom Pricing</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check feature-check"></i>جميع ميزات الخطة الاحترافية</li>
+                        <li><i class="fas fa-check feature-check"></i>حقول غير محدودة</li>
+                        <li><i class="fas fa-check feature-check"></i>تكامل IoT كامل</li>
+                        <li><i class="fas fa-check feature-check"></i>تدريب نماذج AI مخصصة</li>
+                        <li><i class="fas fa-check feature-check"></i>API Access كامل</li>
+                        <li><i class="fas fa-check feature-check"></i>تكامل مع أنظمة ERP</li>
+                        <li><i class="fas fa-check feature-check"></i>مدير حساب مخصص</li>
+                        <li><i class="fas fa-check feature-check"></i>SLA مضمون (99.9%)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="revenue-model">
+                <div class="revenue-title">نموذج الإيرادات المتعدد</div>
+                <div class="revenue-sources">
+                    <div class="revenue-item">
+                        <div class="revenue-icon"><i class="fas fa-credit-card"></i></div>
+                        <div class="revenue-name">الاشتراكات الشهرية/السنوية</div>
+                    </div>
+                    <div class="revenue-item">
+                        <div class="revenue-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="revenue-name">الخدمات الإضافية</div>
+                    </div>
+                    <div class="revenue-item">
+                        <div class="revenue-icon"><i class="fas fa-database"></i></div>
+                        <div class="revenue-name">بيانات مخصصة</div>
+                    </div>
+                    <div class="revenue-item">
+                        <div class="revenue-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="revenue-name">الاستشارات</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>
