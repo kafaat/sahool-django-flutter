@@ -1,19 +1,14 @@
 """
-URLs للذكاء الاصطناعي
+URLs for ai app.
 """
-from django.urls import path
+
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from . import views
 
-app_name = 'ai'
+router = DefaultRouter()
+router.register(r'diseasedetections', views.DiseaseDetectionViewSet, basename='diseasedetection')
 
 urlpatterns = [
-    # كشف الأمراض
-    path('detect-disease/', views.detect_disease, name='detect_disease'),
-    
-    # قائمة الأمراض
-    path('diseases/', views.list_diseases, name='list_diseases'),
-    path('diseases/<str:disease_id>/', views.disease_info, name='disease_info'),
-    
-    # فحص الصحة
-    path('health/', views.ai_health_check, name='health_check'),
+    path('', include(router.urls)),
 ]

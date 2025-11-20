@@ -1,41 +1,33 @@
+"""
+Models for farms app.
+"""
+
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
+
 
 class Farm(models.Model):
-    """نموذج المزرعة"""
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='farms')
-    name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    total_area = models.DecimalField(max_digits=10, decimal_places=2, help_text='المساحة بالهكتار')
-    description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='farms/', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
+    """
+    Farm model.
+    """
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='farms', verbose_name=_('المالك'))
+    name = models.CharField(max_length=200, verbose_name=_('اسم المزرعة'))
+    location = models.CharField(max_length=500, verbose_name=_('الموقع'))
+    area = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_('المساحة (هكتار)'))
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True, verbose_name=_('خط العرض'))
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True, verbose_name=_('خط الطول'))
+    description = models.TextField(blank=True, null=True, verbose_name=_('الوصف'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('تاريخ الإنشاء'))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('تاريخ التحديث'))
+
     class Meta:
-        verbose_name = 'مزرعة'
-        verbose_name_plural = 'المزارع'
+        verbose_name = _('Farm')
+        verbose_name_plural = _('Farms')
         ordering = ['-created_at']
-    
+
     def __str__(self):
         return self.name
 
 
-class Crop(models.Model):
-    """نموذج المحصول"""
-    name = models.CharField(max_length=100)
-    scientific_name = models.CharField(max_length=150, blank=True)
-    category = models.CharField(max_length=50)
-    growing_season = models.CharField(max_length=50)
-    water_requirements = models.CharField(max_length=50)
-    description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='crops/', blank=True, null=True)
-    
-    class Meta:
-        verbose_name = 'محصول'
-        verbose_name_plural = 'المحاصيل'
-    
-    def __str__(self):
-        return self.name
